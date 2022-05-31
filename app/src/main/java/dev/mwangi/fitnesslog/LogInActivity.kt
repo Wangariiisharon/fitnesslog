@@ -8,8 +8,6 @@ class LogInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
-        val intent=Intent(this,LogInActivity::class.java)
-        startActivity(intent)
-        finish()
+
     }
 }
