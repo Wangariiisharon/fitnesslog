@@ -8,42 +8,40 @@ import android.widget.EditText
 import android.widget.TextView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import dev.mwangi.fitnesslog.databinding.ActivityHomeBinding
+import dev.mwangi.fitnesslog.databinding.ActivityLogInBinding
 
 class LogInActivity : AppCompatActivity() {
-    lateinit var etEmail:EditText
-    lateinit var etPassword:EditText
-    lateinit var  tvSignUp:TextView
-    lateinit var tilEmail:TextInputLayout
-    lateinit var tilPassword:TextInputLayout
-    lateinit var btnLogIn:Button
-
+    lateinit var binding: ActivityLogInBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_log_in)
-        etEmail=findViewById(R.id.etEmail)
-        etPassword=findViewById(R.id.etPassword)
-        tvSignUp=findViewById(R.id.tvSignUp)
-        tilEmail=findViewById(R.id.tilEmail)
-        tilPassword=findViewById(R.id.tilPassword)
-        btnLogIn=findViewById(R.id.btnLogIn)
+        binding= ActivityLogInBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        tvSignUp.setOnClickListener {
+
+
+
+        binding.tvSignUp.setOnClickListener {
             val intent=Intent(this,SignUpActivity::class.java)
             startActivity(intent)
         }
-      btnLogIn.setOnClickListener {
+      binding.btnLogIn.setOnClickListener {
           validateLogIn()
+          val intent=Intent(this,HomeActivity::class.java)
+          startActivity(intent)
       }
         }
 
         fun validateLogIn(){
-            val email=etEmail.text.toString()
-            val password=etPassword.text.toString()
+            val email=binding.etEmail.text.toString()
+            val password=binding.etPassword.text.toString()
+
+//            etEmail.addTextChangedListener()
             if (email.isBlank()){
-                etEmail.error="email is required"
+                binding.etEmail.error="email is required"
             }
             if (password.isBlank()){
-                etPassword.error="password is required"
+                binding.etPassword.error="password is required"
             }
         }
 
